@@ -1,0 +1,35 @@
+.paavTable {
+  width: 100%;
+  border: 1px solid black;
+  font-weight: normal;
+}
+.paavTable > thead > tr > th,
+.paavTable > tbody > tr > th,
+.paavTable > tfoot > tr > th,
+.paavTable > thead > tr > td,
+.paavTable > tbody > tr > td,
+.paavTable > tfoot > tr > td {
+  padding: 5px;
+  border: 1px solid black;
+}
+.paavTable a {
+  color: #000;
+}
+.paavTable-commands {
+  width: 100px;
+}
+.paavTable-commands > a {
+  padding: 0 3px 0 3px;
+}
+.paavTable-sortLink-desc {
+  font-family: 'fontello';
+}
+.paavTable-sortLink-desc:after {
+  content: ' \e804';
+}
+.paavTable-sortLink-asc {
+  font-family: 'fontello';
+}
+.paavTable-sortLink-asc:after {
+  content: ' \e803';
+}

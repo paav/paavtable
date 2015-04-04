@@ -1,0 +1,48 @@
+.paavTable {
+  width: 100%;
+  border: 1px solid black;
+
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        padding: 5px;
+        border: 1px solid black;
+      }
+    }
+  }
+
+  //tmp-start
+  font-weight: normal;
+
+  a {
+    color: #000;
+  }
+  //tmp-end
+}
+
+.paavTable-commands {
+  width: 100px;
+
+  > a {
+    padding: 0 3px 0 3px;
+  }
+}
+
+.paavTable-sortLink-desc {
+  font-family: 'fontello';
+
+  &:after {
+    content: ' \e804';
+  } 
+}
+
+.paavTable-sortLink-asc {
+  font-family: 'fontello';
+
+  &:after {
+    content: ' \e803';
+  } 
+}
