@@ -1,4 +1,6 @@
 <?php
+// TODO: do something with dir separators
+require_once dirname(__FILE__). '/vendor/paavpager/PaavPager.php';
 
 class PaavTable extends CWidget
 {
@@ -49,11 +51,11 @@ class PaavTable extends CWidget
     public function run()
     {
         $models = $this->dataProvider->getData();
+        $pages = $this->dataProvider->getPagination();
         $attrLabels = $models[0]->attributeLabels();
 
-        l($attrLabels);
-
         $this->render('table', array(
+            'pages' => $pages,
             'models' => $models,
             'attrLabels' => $attrLabels,
         ));

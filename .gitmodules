@@ -1,0 +1,3 @@
+[submodule "vendor/paavpager"]
+	path = vendor/paavpager
+	url = git@github.com:paav/paavpager.git
