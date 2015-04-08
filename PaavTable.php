@@ -17,10 +17,15 @@ class PaavTable extends CWidget
             throw new CException(
                 'You must provide `dataProvider` property initial value');
 
-        $this->classes = array(
-            'sortLinkAsc' => 'paavTable-sortLink-asc',
-            'sortLinkDesc' => 'paavTable-sortLink-desc',
-        );
+        if (empty($this->columns))
+            throw new CException(
+                'You must provide `columns` property initial value');
+
+        if (empty($this->classes))
+            $this->classes = array(
+                'sortLinkAsc' => 'paavTable-sortLink-asc',
+                'sortLinkDesc' => 'paavTable-sortLink-desc',
+            );
 
         $this->_app = Yii::app();
 
