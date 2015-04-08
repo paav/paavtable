@@ -5,26 +5,17 @@ require_once dirname(__FILE__). '/vendor/paavpager/PaavPager.php';
 class PaavTable extends CWidget
 {
     public $dataProvider;
-    public $sort;
     public $classes = array();
     public $columns = array();
 
     protected $_app;
+    protected $_sort;
 
     public function init()
     {
-        $this->sort = new CSort();
-
-        $this->sort->attributes = array(
-            'name',
-            'address',
-        );
-
-        $this->sort->defaultOrder = [
-            'name' => CSort::SORT_ASC,
-        ];
-
-        $this->dataProvider->sort = $this->sort;
+        if (!isset($this->dataProvider))
+            throw new CException(
+                'You must provide `dataProvider` property initial value');
 
         $this->classes = array(
             'sortLinkAsc' => 'paavTable-sortLink-asc',
@@ -72,17 +63,17 @@ class PaavTable extends CWidget
 
     public function isSortable($attr)
     {
-        $sortableAttrs = [
+        $sortableAttrs = array(
             'name',
             'address',
-        ];
+        );
         
         return in_array($attr, $sortableAttrs);
     }
 
     public function createSortLink($name, $label)
     {
-        $sort = $this->sort;
+        $sort = $this->dataProvider->sort;
 
         if (!in_array($name, $sort->attributes))
             return $label;
