@@ -14,10 +14,10 @@ class PaavTable extends CWidget
     {
         $this->sort = new CSort();
 
-        $this->sort->attributes = [
+        $this->sort->attributes = array(
             'name',
             'address',
-        ];
+        );
 
         $this->sort->defaultOrder = [
             'name' => CSort::SORT_ASC,
@@ -52,7 +52,8 @@ class PaavTable extends CWidget
     {
         $models = $this->dataProvider->getData();
         $pages = $this->dataProvider->getPagination();
-        $attrLabels = $models[0]->attributeLabels();
+
+        $attrLabels = $this->_getAttrLabels();
 
         $this->render('table', array(
             'pages' => $pages,
@@ -83,7 +84,7 @@ class PaavTable extends CWidget
         $sort = $this->sort;
 
         if (!in_array($name, $sort->attributes))
-            return;
+            return $label;
 
         $class = null;
         $direction = CSort::SORT_ASC;
@@ -109,7 +110,24 @@ class PaavTable extends CWidget
 
         $url = $sort->createUrl($controller, array($name => $direction));
 
-        return CHtml::link($name, $url, array('class' => $class));
+        return CHtml::link($label, $url, array('class' => $class));
     }
 
+    protected function _getAttrLabels()
+    {
+        $dp = $this->dataProvider;
+
+        $select = $dp->criteria->select;
+        $model = $dp->model;
+
+        if (is_string($select))
+            $attrs = explode(',', $select);
+        else
+            throw new Exception('$select is not a string');
+
+        foreach ($attrs as $attr)
+           $attrLabels[$attr] = $model->getAttributeLabel($attr);
+
+        return $attrLabels;
+    }
 }
