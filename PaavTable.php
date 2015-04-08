@@ -7,6 +7,7 @@ class PaavTable extends CWidget
     public $dataProvider;
     public $sort;
     public $classes = array();
+    public $columns = array();
 
     protected $_app;
 
@@ -115,15 +116,9 @@ class PaavTable extends CWidget
 
     protected function _getAttrLabels()
     {
-        $dp = $this->dataProvider;
+        $model = $this->dataProvider->model;
 
-        $select = $dp->criteria->select;
-        $model = $dp->model;
-
-        if (is_string($select))
-            $attrs = explode(',', $select);
-        else
-            throw new Exception('$select is not a string');
+        $attrs = $this->columns;
 
         foreach ($attrs as $attr)
            $attrLabels[$attr] = $model->getAttributeLabel($attr);
