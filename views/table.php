@@ -13,7 +13,7 @@
       <?php foreach ($attrLabels as $name => $label): ?>
       <th><?php echo $this->createSortLink($name, $label); ?>
       <?php endforeach; ?>
-      <?php // Last th is for the commands column; ?>
+      <?php // Last th is for the commands column ?>
       <th>
   <tbody>
 

@@ -7,6 +7,8 @@ class PaavTable extends CWidget
     public $dataProvider;
     public $classes = array();
     public $columns = array();
+    public $view;
+    public $data = array();
 
     protected $_app;
     protected $_sort;
@@ -26,6 +28,12 @@ class PaavTable extends CWidget
                 'sortLinkAsc' => 'paavTable-sortLink-asc',
                 'sortLinkDesc' => 'paavTable-sortLink-desc',
             );
+
+        if (!isset($this->view))
+            $this->view = 'table.php';
+
+        if (!empty($this->data))
+            $this->data = (object) $this->data;
 
         $this->_app = Yii::app();
 
@@ -52,10 +60,11 @@ class PaavTable extends CWidget
 
         $attrLabels = $this->_getAttrLabels();
 
-        $this->render('table', array(
+        $this->render($this->view, array(
             'pages' => $pages,
             'models' => $models,
             'attrLabels' => $attrLabels,
+            'data' => $this->data,
         ));
     }
 
