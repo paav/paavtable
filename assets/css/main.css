@@ -21,15 +21,11 @@
 .paavTable-commands > a {
   padding: 0 3px 0 3px;
 }
-.paavTable-sortLink-desc {
-  font-family: 'fontello';
-}
 .paavTable-sortLink-desc:after {
+  font-family: 'fontello';
   content: ' \e804';
 }
-.paavTable-sortLink-asc {
-  font-family: 'fontello';
-}
 .paavTable-sortLink-asc:after {
+  font-family: 'fontello';
   content: ' \e803';
 }
