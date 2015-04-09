@@ -6,7 +6,11 @@
 /* @var $attrlabels array */
 /* @var $pages CPagination */
 ?>
-<?php $this->widget('PaavPager', array('pages'=>$pages)); ?>
+<?php
+  $this->widget('PaavPager', array(
+    'pages'=>$pages,
+  ));
+?>
 <table class="paavTable">
   <thead>
     <tr>

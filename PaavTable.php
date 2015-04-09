@@ -30,7 +30,7 @@ class PaavTable extends CWidget
             );
 
         if (!isset($this->view))
-            $this->view = 'table.php';
+            $this->view = 'table';
 
         if (!empty($this->data))
             $this->data = (object) $this->data;
