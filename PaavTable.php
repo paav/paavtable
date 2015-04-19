@@ -10,8 +10,8 @@ class PaavTable extends CWidget
     public $view;
     public $data = array();
 
-    protected $_app;
-    protected $_sort;
+    protected $app;
+    protected $sort;
 
     public function init()
     {
@@ -34,7 +34,7 @@ class PaavTable extends CWidget
         if (!empty($this->data))
             $this->data = (object) $this->data;
 
-        $this->_app = Yii::app();
+        $this->app = Yii::app();
 
         $assetsPath = dirname(__FILE__) . '/assets';
 
@@ -43,8 +43,8 @@ class PaavTable extends CWidget
             'fontello.css',
         ];
 
-        $am = $this->_app->assetManager;
-        $cs = $this->_app->clientScript;
+        $am = $this->app->assetManager;
+        $cs = $this->app->clientScript;
 
         $assetsUrl = $am->publish($assetsPath, false, -1, true);
 
@@ -57,7 +57,7 @@ class PaavTable extends CWidget
         $models = $this->dataProvider->getData();
         $pages = $this->dataProvider->getPagination();
 
-        $attrLabels = $this->_getAttrLabels();
+        $attrLabels = $this->getAttrLabels();
 
         $this->render($this->view, array(
             'pages' => $pages,
@@ -71,7 +71,7 @@ class PaavTable extends CWidget
 	{
 		$route = get_class($model) . '/' . $action;
 
-		return $this->_app->createAbsoluteUrl($route, $params);
+		return $this->app->createAbsoluteUrl($route, $params);
 	}
 
     public function isSortable($attr)
@@ -111,14 +111,14 @@ class PaavTable extends CWidget
             }
         }
 
-        $controller = $this->_app->getController();
+        $controller = $this->app->getController();
 
         $url = $sort->createUrl($controller, array($name => $direction));
 
         return CHtml::link($label, $url, array('class' => $class));
     }
 
-    protected function _getAttrLabels()
+    protected function getAttrLabels()
     {
         $model = $this->dataProvider->model;
 
