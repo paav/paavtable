@@ -20,8 +20,7 @@ class PaavTable extends CWidget
                 'You must provide `dataProvider` property initial value');
 
         if (empty($this->columns))
-            throw new CException(
-                'You must provide `columns` property initial value');
+            $this->columns = $this->dataProvider->model->attributeNames();
 
         if (empty($this->classes))
             $this->classes = array(
