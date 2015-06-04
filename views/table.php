@@ -24,8 +24,8 @@
     <?php foreach ($models as $model): ?>
     <tr>
 
-      <?php foreach ($attrLabels as $name => $label): ?>
-      <td><?php echo $model[$name]; ?>
+      <?php foreach ($attrLabels as $attr => $label): ?>
+      <td><?php echo CHtml::value($model, $attr, 'Не указано'); ?>
       <?php endforeach; ?>
 
       <td class="paavTable-commands">
